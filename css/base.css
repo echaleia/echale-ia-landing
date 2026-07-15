@@ -1,0 +1,94 @@
+/* ============================================================
+   BASE — reset, variables de diseño y tipografía global
+   Échale IA · Landing "Noche marina + liquid glass"
+   ============================================================ */
+
+:root{
+  /* Paleta */
+  --base:       #070F1F;
+  --marino:     #0B1F3A;
+  --oro:        #C9A227;
+  --oro-luz:    #D9A83C;   /* dorado cálido de marca (referencia v2) */
+  --oro-luz-rgb: 217, 168, 60;
+  --crema:      #FBFBFA;
+  --azul-gris:  #93A8BF;
+  --verde:      #3DD68C;
+
+  /* Vidrio líquido */
+  --glass:        rgba(15, 30, 56, .16);
+  --glass-borde:  rgba(255,255,255,.14);
+  --glass-brillo: rgba(255,255,255,.12);
+  --linea:        rgba(255,255,255,.12);
+  --linea-oro:    rgba(201,162,39,.35);
+
+  /* Tipografía */
+  --display: "Fraunces", Georgia, serif;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* Geometría y movimiento */
+  --radio: 24px;
+  --radio-sm: 15px;
+  --ease-out: cubic-bezier(.16,1,.3,1);
+  --spring: cubic-bezier(.34,1.4,.64,1);
+  --glide: cubic-bezier(.22, 1, .36, 1);
+
+  /* Sombras */
+  --sombra-glass: inset 0 1px 0 var(--glass-brillo), 0 20px 50px -24px rgba(0,0,0,.8);
+  --glow-oro: 0 0 0 1px rgba(201,162,39,.4), 0 16px 44px -10px rgba(201,162,39,.5);
+}
+
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+
+/* Tipografía fluida: crece con la pantalla (hasta 20px base) */
+html{
+  scroll-behavior:smooth; -webkit-text-size-adjust:100%; color-scheme:dark;
+  font-size:clamp(15.5px, .45vw + 9px, 20px);
+}
+
+body{
+  font-family:var(--sans);
+  color:var(--crema);
+  background:var(--base);
+  line-height:1.6;
+  overflow-x:hidden;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  -webkit-tap-highlight-color:rgba(201,162,39,.18);
+}
+
+.skip{ position:absolute; left:-9999px; top:8px; z-index:300;
+  background:var(--oro); color:#1a1303; padding:10px 16px; border-radius:10px; font-weight:700; }
+.skip:focus{ left:16px; }
+
+/* Layout */
+.wrap{ width:min(1340px, 92vw); margin-inline:auto; }
+section{ padding:clamp(80px, 8vw, 128px) 0; position:relative; }
+
+.kicker{
+  display:inline-flex; align-items:center; gap:10px;
+  font-size:.74rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--oro-luz); margin-bottom:16px;
+}
+.kicker::before{ content:""; width:26px; height:1px; background:var(--oro); }
+
+/* Tipografía global */
+h1,h2,h3{ font-family:var(--display); font-weight:700; line-height:1.1; letter-spacing:-.01em; }
+h1{ font-size:clamp(2.5rem, 5vw, 4.6rem); }
+h2{ font-size:clamp(1.8rem, 3.2vw, 3rem); margin-bottom:16px; }
+h3{ font-size:1.16rem; font-weight:600; }
+.ia{ color:var(--oro-luz); font-style:italic; }
+.muted{ color:var(--azul-gris); }
+p.lead{ font-size:clamp(1.02rem, 1.3vw, 1.25rem); color:var(--azul-gris); max-width:58ch; }
+p.lead strong, p.lead b{ color:var(--crema); }
+
+/* Utilidades de alineación */
+.t-centro{ text-align:center; }
+.kicker-centro{ display:flex; justify-content:center; }
+
+/* Reduced motion — reglas globales (las específicas viven en cada bloque) */
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  .reveal{ opacity:1; transform:none; transition:none; }
+  *{ animation-duration:.01ms !important; transition-duration:.15s !important; }
+}

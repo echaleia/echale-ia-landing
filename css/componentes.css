@@ -1,0 +1,56 @@
+/* ============================================================
+   COMPONENTES — vidrio líquido, botones, reveal y ripple
+   ============================================================ */
+
+/* Liquid glass: solo donde hace falta */
+.glass{
+  background:linear-gradient(180deg, rgba(255,255,255,.045) 0%, rgba(255,255,255,0) 34%), var(--glass);
+  border:1px solid var(--glass-borde);
+  border-radius:var(--radio);
+  box-shadow:var(--sombra-glass);
+  -webkit-backdrop-filter:blur(10px) saturate(135%);
+  backdrop-filter:blur(10px) saturate(135%);
+}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .glass{ background:rgba(11,25,46,.88); }
+}
+
+/* Reveal on scroll */
+.reveal{ opacity:0; transform:translateY(26px); transition:opacity .8s var(--ease-out), transform .8s var(--ease-out); }
+.reveal.on{ opacity:1; transform:none; }
+.reveal[data-delay="1"]{ transition-delay:.12s; }
+.reveal[data-delay="2"]{ transition-delay:.24s; }
+.reveal[data-delay="3"]{ transition-delay:.36s; }
+
+/* Botones */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  font-family:var(--sans); font-weight:700; font-size:1.02rem; line-height:1;
+  padding:19px 34px; border-radius:999px; border:0; cursor:pointer;
+  text-decoration:none; position:relative; overflow:hidden;
+  transition:transform .35s var(--spring), box-shadow .35s ease, background .3s ease;
+  will-change:transform;
+}
+.btn-oro{
+  background:linear-gradient(180deg, var(--oro-luz) 0%, var(--oro) 55%, #A8871E 100%);
+  color:#1a1303; box-shadow:var(--glow-oro);
+}
+.btn-oro:hover{ transform:translateY(-2px) scale(1.02); box-shadow:0 0 0 1px rgba(201,162,39,.55), 0 22px 54px -10px rgba(201,162,39,.6); }
+.btn-oro:active{ transform:translateY(0) scale(.99); }
+.btn-block{ width:100%; }
+.btn-ghost{
+  background:rgba(255,255,255,.05); color:var(--crema);
+  border:1px solid var(--glass-borde);
+  -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+  padding:13px 24px; font-size:.9rem;
+}
+.btn-ghost:hover{ background:rgba(255,255,255,.1); transform:translateY(-1px); }
+
+/* Ripple de click */
+.ripple{
+  position:absolute; border-radius:50%; pointer-events:none;
+  background:rgba(var(--oro-luz-rgb), .3);
+  transform:scale(0); opacity:1;
+  animation:rip .65s ease-out forwards;
+}
+@keyframes rip{ to{ transform:scale(3); opacity:0; } }

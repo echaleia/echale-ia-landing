@@ -1,0 +1,35 @@
+/* ============================================================
+   BONOS — línea de tiempo dorada con nodo destacado (regalo)
+   ============================================================ */
+
+.tl{ margin-top:56px; position:relative; padding-left:clamp(56px, 6vw, 84px); }
+.tl::before{
+  content:""; position:absolute; left:calc(clamp(56px, 6vw, 84px) / 2 - 1px); top:8px; bottom:8px; width:2px;
+  background:linear-gradient(180deg, rgba(201,162,39,.1), var(--oro) 45%, rgba(201,162,39,.1));
+}
+.tl-item{ position:relative; padding:0 0 clamp(40px, 4vw, 60px); }
+.tl-item:last-child{ padding-bottom:0; }
+.tl-item .nodo{
+  position:absolute; top:2px;
+  left:calc(-1 * clamp(56px, 6vw, 84px) + clamp(56px, 6vw, 84px) / 2 - 17px);
+  width:34px; height:34px; border-radius:50%;
+  display:grid; place-items:center;
+  background:var(--base); border:1px solid var(--linea-oro);
+  font-family:var(--display); font-style:italic; font-size:.82rem; color:var(--oro-luz);
+}
+.tl-item.oro .nodo{ background:linear-gradient(180deg, var(--oro-luz), var(--oro)); color:#1a1303; border-color:var(--oro-luz); box-shadow:0 0 24px -4px rgba(201,162,39,.6); }
+.tl-item .cuando{ font-size:.7rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--azul-gris); margin-bottom:6px; }
+.tl-item h3{ font-size:clamp(1.2rem, 1.6vw, 1.5rem); margin-bottom:8px; }
+.tl-item p{ color:var(--azul-gris); max-width:64ch; font-size:clamp(.94rem, 1.1vw, 1.04rem); }
+.tl-item p b{ color:var(--crema); }
+.tl-item .pill{
+  display:inline-block; font-size:.66rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase;
+  color:#1a1303; background:linear-gradient(180deg, var(--oro-luz), var(--oro));
+  padding:5px 12px; border-radius:999px; margin-bottom:10px;
+}
+.tl-item .etiquetas{ display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; }
+.tl-item .etiquetas code{
+  font-family:ui-monospace, "Cascadia Code", Consolas, monospace; font-size:.76rem;
+  color:var(--oro-luz); background:rgba(201,162,39,.1); border:1px solid rgba(201,162,39,.3);
+  padding:5px 10px; border-radius:8px;
+}

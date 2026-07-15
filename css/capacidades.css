@@ -1,0 +1,28 @@
+/* ============================================================
+   CAPACIDADES — columnas de revista con numerales en contorno
+   ============================================================ */
+
+.cols3{ display:grid; grid-template-columns:repeat(3, 1fr); margin-top:52px; }
+.col{
+  padding:8px clamp(26px, 3vw, 52px) 12px;
+  border-left:1px solid var(--linea);
+  position:relative;
+}
+.col:first-child{ border-left:0; padding-left:8px; }
+.col .num{
+  font-family:var(--display); font-style:italic; font-weight:400;
+  font-size:clamp(3.4rem, 5.4vw, 5.6rem); line-height:1;
+  color:transparent; -webkit-text-stroke:1px rgba(var(--oro-luz-rgb), .55);
+  display:block; margin-bottom:22px;
+  transition:color .6s ease;
+}
+.col:hover .num{ color:rgba(var(--oro-luz-rgb), .14); }
+.col h3{ font-size:clamp(1.2rem, 1.6vw, 1.5rem); margin-bottom:12px; }
+.col p{ font-size:clamp(.94rem, 1.1vw, 1.04rem); color:var(--azul-gris); }
+.col .linea-oro{ width:44px; height:2px; background:linear-gradient(90deg, var(--oro), transparent); margin:18px 0 0; }
+@media (max-width:860px){
+  .cols3{ grid-template-columns:1fr; }
+  .col{ border-left:0; border-top:1px solid var(--linea); padding:28px 8px; }
+  .col:first-child{ border-top:0; }
+  .col .num{ font-size:2.6rem; margin-bottom:12px; }
+}

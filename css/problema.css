@@ -1,0 +1,29 @@
+/* ============================================================
+   PROBLEMA — filas editoriales con cifras gigantes
+   ============================================================ */
+
+.filas{ margin-top:48px; border-top:1px solid var(--linea); }
+.fila{
+  display:grid; grid-template-columns:minmax(180px, 260px) 1fr; gap:clamp(20px, 3vw, 48px);
+  padding:clamp(30px, 3vw, 44px) 8px; border-bottom:1px solid var(--linea);
+  align-items:start; position:relative;
+  transition:background .5s ease, padding-left .5s var(--ease-out);
+}
+.fila::before{
+  content:""; position:absolute; left:0; top:0; height:1px; width:0;
+  background:linear-gradient(90deg, var(--oro), transparent);
+  transition:width .8s var(--ease-out);
+}
+.fila:hover{ padding-left:18px; }
+.fila:hover::before{ width:100%; }
+.fila .big{
+  font-family:var(--display); font-weight:700; line-height:.95;
+  font-size:clamp(2.4rem, 4vw, 3.8rem); color:var(--oro-luz);
+}
+.fila .big small{ display:block; font-size:.68rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--azul-gris); margin-top:10px; font-family:var(--sans); }
+.fila h3{ margin-bottom:8px; font-size:clamp(1.2rem, 1.6vw, 1.5rem); }
+.fila p{ font-size:clamp(.94rem, 1.1vw, 1.05rem); color:var(--azul-gris); max-width:62ch; }
+@media (max-width:720px){
+  .fila{ grid-template-columns:1fr; gap:10px; }
+  .fila .big{ font-size:2rem; }
+}

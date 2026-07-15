@@ -1,0 +1,18 @@
+/* ============================================================
+   FAQ — acordeón de líneas tipográficas, sin cajas
+   ============================================================ */
+
+.faq{ margin-top:48px; max-width:860px; margin-inline:auto; border-top:1px solid var(--linea); }
+.faq details{ border-bottom:1px solid var(--linea); }
+.faq summary{
+  list-style:none; cursor:pointer; padding:clamp(20px, 2vw, 28px) 6px; position:relative; overflow:hidden;
+  display:flex; justify-content:space-between; align-items:center; gap:16px;
+  font-weight:600; font-size:clamp(1rem, 1.2vw, 1.15rem); font-family:var(--display);
+  transition:color .3s ease;
+}
+.faq summary:hover{ color:var(--oro-luz); }
+.faq summary::-webkit-details-marker{ display:none; }
+.faq summary .chev{ flex:none; transition:transform .4s var(--ease-out); color:var(--oro-luz); font-family:var(--sans); }
+.faq details[open] summary .chev{ transform:rotate(45deg); }
+.faq .ans{ padding:0 6px 24px; font-size:.95rem; color:var(--azul-gris); max-width:68ch; }
+.faq .ans b{ color:var(--crema); }

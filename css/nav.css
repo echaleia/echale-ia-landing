@@ -1,0 +1,19 @@
+/* ============================================================
+   NAV — barra flotante de vidrio con logo y CTA
+   ============================================================ */
+
+.nav{
+  position:fixed; top:16px; left:50%; transform:translateX(-50%);
+  z-index:100; width:min(1340px, 94vw);
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 14px 10px 22px; border-radius:999px;
+  opacity:0; translate:0 -12px;
+  animation:navIn .9s var(--ease-out) .2s forwards;
+}
+@keyframes navIn{ to{ opacity:1; translate:0 0; } }
+.nav .logo{ display:flex; align-items:center; }
+.nav .logo img{ height:62px; width:auto; display:block; margin:-10px 0; }
+@media (max-width:560px){
+  .nav .logo img{ height:46px; margin:-5px 0; }
+  .nav .btn-ghost{ padding:11px 16px; font-size:.82rem; }
+}

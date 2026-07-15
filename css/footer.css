@@ -1,0 +1,9 @@
+/* ============================================================
+   FOOTER — cierre de marca en vidrio
+   ============================================================ */
+
+footer{ padding:30px 0 50px; }
+.foot{ display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap; padding:26px 34px; }
+.foot img{ height:60px; width:auto; }
+.foot p{ font-size:.8rem; color:var(--azul-gris); }
+@media (max-width:560px){ .foot img{ height:46px; } }

@@ -1,0 +1,55 @@
+/* ============================================================
+   FONDO — fotografía marina con cámara parallax, viñeta, grano,
+   halo del cursor y marcas de agua flotantes
+   ============================================================ */
+
+/* La foto ya trae el tono marino horneado en el archivo — sin filtros encima */
+.bg-cam{ position:fixed; inset:0; z-index:-4; overflow:hidden; pointer-events:none; }
+.bg-cam img{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:center;
+  will-change:transform;
+  transform:scale(1.15);
+  /* La fluidez del parallax vive aquí: el JS apunta el destino y esta
+     transición del compositor desliza la cámara, lenta y continua. */
+  transition:transform 1.6s var(--glide);
+}
+
+/* Solo una viñeta neutra y suave en los bordes para legibilidad */
+.bg-vineta{
+  position:fixed; inset:0; z-index:-3; pointer-events:none;
+  background:radial-gradient(115% 85% at 50% 42%, transparent 42%, rgba(4,8,16,.5) 100%);
+}
+
+.bg-grain{
+  position:fixed; inset:0; z-index:-2; pointer-events:none; opacity:.35;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+  mix-blend-mode:overlay;
+}
+
+/* Halo discreto que sigue al mouse (solo puntero fino) */
+.cursor-glow{ display:none; }
+@media (pointer:fine){
+  .cursor-glow{
+    display:block; position:fixed; z-index:250; pointer-events:none;
+    width:220px; height:220px; border-radius:50%;
+    left:0; top:0; transform:translate(-50%,-50%);
+    background:radial-gradient(circle, rgba(147,168,191,.05) 0%, transparent 60%);
+    mix-blend-mode:screen;
+    transition:transform .5s var(--glide);
+  }
+}
+
+/* Marcas de agua gigantes con parallax de profundidad */
+.wm{
+  position:absolute; width:min(480px, 60vw); opacity:.05; pointer-events:none; user-select:none;
+  transform:rotate(-8deg); z-index:-1;
+  transition:transform 1s var(--glide);
+}
+.wm-der{ right:-70px; top:40px; }
+.wm-izq{ left:-70px; bottom:20px; transform:rotate(7deg); }
+
+@media (prefers-reduced-motion: reduce){
+  .bg-cam img{ transform:scale(1.12) !important; transition:none; }
+  .cursor-glow{ display:none !important; }
+}

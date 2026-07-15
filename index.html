@@ -73,7 +73,13 @@
       </div>
 
       <div class="hero-cta-row reveal" data-delay="3">
-        <a class="btn btn-oro" href="#registro">Reservar mi cupo gratis</a>
+        <div class="hero-botones">
+          <a class="btn btn-oro" href="#registro">Reservar mi cupo gratis</a>
+          <a class="btn btn-ghost btn-demo" href="#video">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg>
+            Mira esta demostración
+          </a>
+        </div>
         <span class="trust-line">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           En vivo · 100% gratis · sin tarjeta · con regalo de bienvenida
@@ -103,6 +109,28 @@
     </aside>
   </div>
 </header>
+
+<!-- ============ VIDEO (lo segundo que ve el visitante) ============ -->
+<section id="video" aria-labelledby="t-video">
+  <div class="wrap">
+    <span class="kicker reveal">Mira esto</span>
+    <h2 id="t-video" class="reveal">La IA encontrando <span class="ia">tus próximos clientes.</span></h2>
+    <p class="lead reveal" data-delay="1">Demostración rápida y real: inteligencia artificial + Google Maps para detectar clientes potenciales de tu negocio — con nombre, ubicación y por dónde abordarlos. En minutos, no en días.</p>
+
+    <div class="vsl reveal" data-delay="1" id="vsl" role="button" tabindex="0" aria-label="Reproducir video: la IA buscando clientes potenciales con Google Maps">
+      <video id="vidPlayer" src="vid/video-landing.mp4" poster="img/video-poster.jpg" preload="metadata" playsinline></video>
+      <div class="capa">
+        <div class="vsl-inner">
+          <div class="vsl-play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg>
+          </div>
+          <p>IA + Google Maps: así se buscan clientes potenciales</p>
+          <small>Demostración real · en minutos, no en días</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ============ PROBLEMA · filas editoriales ============ -->
 <section aria-labelledby="t-problema">
@@ -164,28 +192,6 @@
         </div>
         <div class="chat" id="chatDespues" aria-live="off"></div>
       </article>
-    </div>
-  </div>
-</section>
-
-<!-- ============ VIDEO ============ -->
-<section aria-labelledby="t-video">
-  <div class="wrap">
-    <span class="kicker reveal">Mira esto</span>
-    <h2 id="t-video" class="reveal">La IA encontrando <span class="ia">tus próximos clientes.</span></h2>
-    <p class="lead reveal" data-delay="1">Demostración rápida y real: inteligencia artificial + Google Maps para detectar clientes potenciales de tu negocio — con nombre, ubicación y por dónde abordarlos. En minutos, no en días.</p>
-
-    <div class="vsl reveal" data-delay="1" id="vsl" role="button" tabindex="0" aria-label="Reproducir video: la IA buscando clientes potenciales con Google Maps">
-      <video id="vidPlayer" src="vid/video-landing.mp4" poster="img/video-poster.jpg" preload="metadata" playsinline></video>
-      <div class="capa">
-        <div class="vsl-inner">
-          <div class="vsl-play" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg>
-          </div>
-          <p>IA + Google Maps: así se buscan clientes potenciales</p>
-          <small>Demostración real · en minutos, no en días</small>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -299,7 +305,7 @@
 
     <form class="lead-form glass reveal" data-delay="1" id="leadForm"
           data-endpoint="PEGAR_URL_DE_GOOGLE_APPS_SCRIPT"
-          data-whatsapp="https://chat.whatsapp.com/JmmzrhZNKriCZViX3XiNhv"
+          data-whatsapp="https://chat.whatsapp.com/IdAFBS4j4hhC1lbKT5HLj4"
           novalidate>
 
       <div class="wiz-progress" aria-hidden="true">

@@ -30,6 +30,8 @@
 .cd-sep{ font-family:var(--display); font-size:clamp(1.8rem, 2.8vw, 2.8rem); color:rgba(var(--oro-luz-rgb), .4); line-height:1; padding-top:.2em; }
 
 .hero-cta-row{ display:flex; flex-direction:column; gap:16px; align-items:flex-start; }
+.hero-botones{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+.btn-demo svg{ width:14px; height:14px; color:var(--oro-luz); flex:none; }
 .trust-line{ font-size:.86rem; color:var(--azul-gris); display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
 .trust-line svg{ width:15px; height:15px; color:var(--verde); flex:none; }
 
@@ -46,6 +48,17 @@
   background:rgba(201,162,39,.14); border:1px solid rgba(201,162,39,.32); color:var(--oro-luz);
 }
 .hero-card li .ico svg{ width:18px; height:18px; }
+
+/* Celular: hero más compacto, contador a escala y botones de dedo */
+@media (max-width:560px){
+  .hero{ padding:118px 0 64px; }
+  .badge-live{ font-size:.78rem; padding:9px 16px; }
+  .hero .lead{ margin:18px 0 26px; }
+  .countdown{ margin-bottom:28px; }
+  .cd b{ font-size:2.1rem; }
+  .hero-botones{ width:100%; }
+  .hero-botones .btn{ width:100%; }
+}
 
 @media (prefers-reduced-motion: reduce){
   .badge-live .dot{ animation:none; }

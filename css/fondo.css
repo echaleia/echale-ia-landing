@@ -49,6 +49,12 @@
 .wm-der{ right:-70px; top:40px; }
 .wm-izq{ left:-70px; bottom:20px; transform:rotate(7deg); }
 
+/* En celular las marcas de agua se salían del borde y hacían la página
+   más ancha que la pantalla (causa del zoom/descentrado). Fuera. */
+@media (max-width:720px){
+  .wm{ display:none; }
+}
+
 @media (prefers-reduced-motion: reduce){
   .bg-cam img{ transform:scale(1.12) !important; transition:none; }
   .cursor-glow{ display:none !important; }

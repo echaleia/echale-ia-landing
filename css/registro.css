@@ -6,6 +6,10 @@
 .cierre-grid{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(40px, 5vw, 80px); align-items:center; }
 @media (max-width:960px){ .cierre-grid{ grid-template-columns:1fr; } }
 
+/* Eco del marcador de cupos junto al formulario */
+.cupos-mini{ font-size:.92rem; color:var(--azul-gris); margin:-4px 0 20px; }
+.cupos-mini b{ color:var(--oro-luz); font-family:var(--display); font-size:1.2rem; font-variant-numeric:tabular-nums; }
+
 .gift{
   display:inline-flex; align-items:center; gap:10px;
   font-size:.82rem; font-weight:700; color:var(--oro-luz);
@@ -60,6 +64,11 @@
 }
 .opt .tick svg{ width:11px; height:11px; }
 .opt.sel .tick{ background:var(--oro); border-color:var(--oro); color:#1a1303; }
+
+/* "Otro": el campo que pide el detalle antes de dejar avanzar */
+.otro-campo{ margin-top:14px; }
+.otro-campo[hidden]{ display:none; }
+.otro-campo .btn{ margin-top:4px; }
 
 /* Errores y navegación */
 .form-err{ display:none; font-size:.84rem; color:#F0A79B; margin:6px 0 10px; }

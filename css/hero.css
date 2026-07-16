@@ -2,9 +2,13 @@
    HERO — titular, contador tipográfico, CTA y panel de sesión
    ============================================================ */
 
-.hero{ min-height:100svh; display:flex; align-items:center; padding:140px 0 90px; }
-.hero-grid{ display:grid; grid-template-columns:1.15fr .85fr; gap:clamp(40px, 5vw, 84px); align-items:center; }
-@media (max-width:960px){ .hero-grid{ grid-template-columns:1fr; gap:38px; } }
+.hero{ min-height:100svh; display:flex; align-items:center; padding:140px 0 90px; position:relative; }
+
+/* Una sola columna centrada: toda la atención al mensaje y al CTA */
+.hero-uno{ display:flex; flex-direction:column; align-items:center; text-align:center; }
+.hero-uno > *{ max-width:900px; }
+.hero-uno .hero-cta-row{ align-items:center; }
+.hero-uno .hero-botones{ justify-content:center; }
 
 .badge-live{
   display:inline-flex; align-items:center; gap:10px;
@@ -20,14 +24,52 @@
 }
 
 .hero h1 em{ font-style:italic; color:var(--oro-luz); }
-.hero .lead{ margin:22px 0 34px; }
+.hero h1 .h1-sub{
+  display:block; font-family:var(--sans); font-weight:600; letter-spacing:0; line-height:1.45;
+  font-size:clamp(1.02rem, 1.5vw, 1.4rem); color:var(--azul-gris); margin-top:18px;
+}
+.hero .lead{ margin:22px 0 30px; }
 
-/* Contador tipográfico: sin cajas, puro ritmo */
-.countdown{ display:flex; align-items:flex-start; gap:clamp(10px, 1.4vw, 22px); margin-bottom:36px; }
-.cd{ text-align:center; }
-.cd b{ font-family:var(--display); font-weight:700; font-size:clamp(2.4rem, 3.6vw, 3.6rem); line-height:1; color:var(--oro-luz); font-variant-numeric:tabular-nums; }
-.cd i{ display:block; font-style:normal; font-size:.64rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--azul-gris); margin-top:8px; }
-.cd-sep{ font-family:var(--display); font-size:clamp(1.8rem, 2.8vw, 2.8rem); color:rgba(var(--oro-luz-rgb), .4); line-height:1; padding-top:.2em; }
+/* Marcador de cupos: la nueva urgencia protagonista */
+.cupos{ display:flex; flex-direction:column; align-items:center; gap:12px; margin-bottom:34px; }
+.cupos-num{ font-size:1.02rem; font-weight:600; color:var(--azul-gris); display:flex; align-items:baseline; gap:12px; }
+.cupos-num b{
+  font-family:var(--display); font-weight:700; line-height:1; color:var(--oro-luz);
+  font-size:clamp(2.6rem, 4vw, 3.6rem); font-variant-numeric:tabular-nums; display:inline-block;
+}
+.cupos-barra{ width:min(420px, 80vw); height:6px; border-radius:99px; background:rgba(255,255,255,.1); overflow:hidden; }
+.cupos-fill{
+  height:100%; width:69.4%; border-radius:99px;
+  background:linear-gradient(90deg, var(--oro), var(--oro-luz));
+  transition:width .8s var(--ease-out);
+}
+.cupos-nota{ font-size:.82rem; color:var(--azul-gris); }
+.cupos-nota b{ color:var(--crema); font-weight:700; }
+.cupos-reloj{ font-variant-numeric:tabular-nums; color:var(--oro-luz); font-weight:700; }
+
+/* Flecha "Desliza": solo en pantallas táctiles pequeñas */
+.desliza{ display:none; }
+@media (max-width:820px){
+  .desliza{
+    display:flex; flex-direction:column; align-items:center; gap:2px;
+    position:absolute; left:50%; bottom:16px; transform:translateX(-50%);
+    color:var(--oro-luz); z-index:5; pointer-events:none;
+  }
+  .desliza span{
+    font-size:.6rem; font-weight:700; letter-spacing:.26em; text-transform:uppercase;
+    color:var(--azul-gris); margin-bottom:4px;
+  }
+  .desliza svg{
+    width:22px; height:22px;
+    filter:drop-shadow(0 0 8px rgba(var(--oro-luz-rgb), .65));
+    animation:deslizaOla 1.9s ease-in-out infinite;
+  }
+  .desliza svg.desliza-eco{ margin-top:-14px; opacity:.45; animation-delay:.22s; }
+}
+@keyframes deslizaOla{
+  0%, 100%{ transform:translateY(0); opacity:.4; }
+  50%{ transform:translateY(7px); opacity:1; }
+}
 
 .hero-cta-row{ display:flex; flex-direction:column; gap:16px; align-items:flex-start; }
 .hero-botones{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
@@ -49,13 +91,15 @@
 }
 .hero-card li .ico svg{ width:18px; height:18px; }
 
-/* Celular: hero más compacto, contador a escala y botones de dedo */
+/* Celular: hero más compacto, cupos a escala y botones de dedo */
 @media (max-width:560px){
-  .hero{ padding:118px 0 64px; }
-  .badge-live{ font-size:.78rem; padding:9px 16px; }
-  .hero .lead{ margin:18px 0 26px; }
-  .countdown{ margin-bottom:28px; }
-  .cd b{ font-size:2.1rem; }
+  .hero{ padding:112px 0 74px; }
+  .badge-live{ font-size:.74rem; padding:9px 14px; }
+  .hero h1 .h1-sub{ margin-top:14px; }
+  .hero .lead{ margin:18px 0 24px; }
+  .cupos{ margin-bottom:26px; gap:10px; }
+  .cupos-num b{ font-size:2.3rem; }
+  .cupos-nota{ font-size:.72rem; }
   .hero-botones{ width:100%; }
   .hero-botones .btn{ width:100%; }
 }

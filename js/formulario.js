@@ -35,7 +35,24 @@
     var next = e.target.closest("[data-next]");
     var back = e.target.closest("[data-back]");
     var send = e.target.closest("[data-enviar]");
+    var otroOk = e.target.closest("[data-otro-ok]");
     var opt = e.target.closest(".opt");
+
+    /* "Otro" exige contar cuál antes de avanzar */
+    if (otroOk) {
+      var otroInput = document.getElementById("f-otro");
+      var errOtro = document.getElementById("err-otro");
+      var detalle = otroInput ? otroInput.value.trim() : "";
+      if (detalle.length < 3) {
+        errOtro.classList.add("show");
+        if (otroInput) otroInput.focus();
+        return;
+      }
+      errOtro.classList.remove("show");
+      form.querySelector('[name="tipo_negocio"]').value = "Otro: " + detalle;
+      show(2);
+      return;
+    }
 
     if (next) {
       var nombre = form.nombre.value.trim();
@@ -58,6 +75,19 @@
       var key = grid.getAttribute("data-options-for");
       var hidden = form.querySelector('[name="' + key + '"]');
       if (hidden) hidden.value = opt.getAttribute("data-value");
+
+      /* Si eligió "Otro", se abre el campo de detalle y NO avanza solo */
+      var otroCampo = document.getElementById("otroCampo");
+      var pideDetalle = opt.hasAttribute("data-requiere-detalle");
+      if (otroCampo && key === "tipo_negocio") {
+        otroCampo.hidden = !pideDetalle;
+        if (pideDetalle) {
+          var inp = document.getElementById("f-otro");
+          if (inp) inp.focus();
+        }
+      }
+      if (pideDetalle) return;
+
       var paso = pasoDe(opt);
       /* Auto-avance solo en pasos intermedios; el 4 envía con su botón */
       if (paso < steps.length - 1 && !lock) {
@@ -66,6 +96,18 @@
       }
     }
   });
+
+  /* Enter dentro del campo "Otro" = Continuar */
+  var otroInputRef = document.getElementById("f-otro");
+  if (otroInputRef) {
+    otroInputRef.addEventListener("keydown", function (ev) {
+      if (ev.key === "Enter") {
+        ev.preventDefault();
+        var b = form.querySelector("[data-otro-ok]");
+        if (b) b.click();
+      }
+    });
+  }
 
   function enviar() {
     var consent = document.getElementById("f-consent");

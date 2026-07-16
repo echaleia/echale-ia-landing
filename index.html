@@ -28,7 +28,6 @@
 <link rel="stylesheet" href="css/problema.css" />
 <link rel="stylesheet" href="css/duelo.css" />
 <link rel="stylesheet" href="css/video.css" />
-<link rel="stylesheet" href="css/capacidades.css" />
 <link rel="stylesheet" href="css/bonos.css" />
 <link rel="stylesheet" href="css/faq.css" />
 <link rel="stylesheet" href="css/registro.css" />
@@ -52,61 +51,46 @@
   <a class="btn btn-ghost" href="#registro">Reservar mi cupo</a>
 </nav>
 
+<!-- Marcador flotante: aparece cuando el contador de cupos sale de pantalla -->
+<a class="cupos-flotante glass" id="cuposFlotante" href="#registro" aria-label="Quedan cupos limitados — ir al registro">
+  <span class="puntito" aria-hidden="true"></span>
+  <span>Quedan <b data-cupos="n">153</b> cupos</span>
+</a>
+
 <main id="main">
 
-<!-- ============ HERO ============ -->
+<!-- ============ HERO (una columna, centrado) ============ -->
 <header class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="badge-live glass reveal"><span class="dot"></span> Masterclass gratuita y en vivo · Domingo 2 de agosto, 8:00 p.m.</span>
-      <h1 class="reveal" data-delay="1">La inteligencia artificial ya trabaja.<br /><em>Aprende a ponerla a trabajar para ti.</em></h1>
-      <p class="lead reveal" data-delay="2">Una sesión en vivo donde entenderás, con demostraciones reales y en lenguaje claro, cómo una <b>IA bien instruida</b> encuentra clientes, redacta por ti y organiza tu semana — mientras tú diriges tu negocio.</p>
+  <div class="wrap hero-uno">
+    <span class="badge-live glass reveal"><span class="dot"></span> Masterclass gratuita y en vivo · Domingo 2 de agosto · 8:00 a 9:30 p.m.</span>
+    <h1 class="reveal" data-delay="1">La IA no es el truco.<br /><em>Saber pedírsela, sí.</em><span class="h1-sub">Las 5 etiquetas que la convierten en tu empleado.</span></h1>
+    <p class="lead reveal" data-delay="2">Una sesión en vivo donde entenderás, con demostraciones reales y en lenguaje claro, cómo una <b>IA bien instruida</b> te arma una lista de <b>100+ clientes potenciales en 5 minutos</b>, te redacta la semana de publicaciones en 20 y te ordena la agenda en 10.</p>
 
-      <div class="countdown reveal" data-delay="2" id="countdown" aria-label="Cuenta regresiva para la masterclass del domingo 2 de agosto, 8 p.m.">
-        <span class="cd"><b id="cdD">--</b><i>Días</i></span>
-        <span class="cd-sep">:</span>
-        <span class="cd"><b id="cdH">--</b><i>Horas</i></span>
-        <span class="cd-sep">:</span>
-        <span class="cd"><b id="cdM">--</b><i>Min</i></span>
-        <span class="cd-sep">:</span>
-        <span class="cd"><b id="cdS">--</b><i>Seg</i></span>
-      </div>
-
-      <div class="hero-cta-row reveal" data-delay="3">
-        <div class="hero-botones">
-          <a class="btn btn-oro" href="#registro">Reservar mi cupo gratis</a>
-          <a class="btn btn-ghost btn-demo" href="#video">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg>
-            Mira esta demostración
-          </a>
-        </div>
-        <span class="trust-line">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          En vivo · 100% gratis · sin tarjeta · con regalo de bienvenida
-        </span>
-      </div>
+    <div class="cupos reveal" data-delay="2" aria-live="polite">
+      <div class="cupos-num">Quedan <b data-cupos="n">153</b> <span>de 500 cupos</span></div>
+      <div class="cupos-barra" aria-hidden="true"><div class="cupos-fill" data-cupos="fill"></div></div>
+      <p class="cupos-nota"><b data-cupos="tomados">347</b> personas ya reservaron su cupo · empieza en <b class="cupos-reloj" id="cdCompact">--</b></p>
     </div>
 
-    <aside class="hero-card glass reveal" data-delay="2" id="heroCard" aria-label="Lo que verás en la masterclass">
-      <div class="hc-head">
-        <img src="img/logo-v2-oscuro.png" alt="" aria-hidden="true" />
-        <span>En esta sesión</span>
+    <div class="hero-cta-row reveal" data-delay="3">
+      <div class="hero-botones">
+        <a class="btn btn-oro" href="#registro">Reservar mi cupo gratis</a>
+        <a class="btn btn-ghost btn-demo" href="#video">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg>
+          Mira esta demostración
+        </a>
       </div>
-      <ul>
-        <li>
-          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1M7.7 16.3l-2.1 2.1" stroke-linecap="round"/></svg></span>
-          <span><b>El método, no la moda.</b> Qué hace distinta a una IA bien instruida y por qué la mayoría la usa mal.</span>
-        </li>
-        <li>
-          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8" stroke-linecap="round"/></svg></span>
-          <span><b>Demostraciones en vivo,</b> no diapositivas: verás la IA trabajando sobre casos de negocios reales.</span>
-        </li>
-        <li>
-          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2 3 7v6c0 5 4 8 9 9 5-1 9-4 9-9V7l-9-5Z" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span><b>Un plan aplicable esa misma noche,</b> aunque nunca hayas usado inteligencia artificial.</span>
-        </li>
-      </ul>
-    </aside>
+      <span class="trust-line">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        90 minutos · en vivo · 100% gratis · sin tarjeta · regalo al instante
+      </span>
+    </div>
+  </div>
+
+  <div class="desliza" aria-hidden="true">
+    <span>Desliza</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 8 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <svg class="desliza-eco" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 8 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </div>
 </header>
 
@@ -115,7 +99,7 @@
   <div class="wrap">
     <span class="kicker reveal">Mira esto</span>
     <h2 id="t-video" class="reveal">La IA encontrando <span class="ia">tus próximos clientes.</span></h2>
-    <p class="lead reveal" data-delay="1">Demostración rápida y real: inteligencia artificial + Google Maps para detectar clientes potenciales de tu negocio — con nombre, ubicación y por dónde abordarlos. En minutos, no en días.</p>
+    <p class="lead reveal" data-delay="1">Demostración rápida y real: inteligencia artificial + Google Maps para detectar <b>100+ clientes potenciales de tu zona</b>, con nombre, ubicación y el primer mensaje ya escrito para cada uno.</p>
 
     <div class="vsl reveal" data-delay="1" id="vsl" role="button" tabindex="0" aria-label="Reproducir video: la IA buscando clientes potenciales con Google Maps">
       <video id="vidPlayer" src="vid/video-landing.mp4" poster="img/video-poster.jpg" preload="metadata" playsinline></video>
@@ -125,7 +109,7 @@
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg>
           </div>
           <p>IA + Google Maps: así se buscan clientes potenciales</p>
-          <small>Demostración real · en minutos, no en días</small>
+          <small>100+ prospectos con nombre, ubicación y primer mensaje — en 5 minutos</small>
         </div>
       </div>
     </div>
@@ -141,7 +125,7 @@
 
     <div class="filas">
       <div class="fila reveal" data-delay="1">
-        <div class="big">Días<small>buscando un cliente</small></div>
+        <div class="big">3 días<small>buscando un cliente</small></div>
         <div>
           <h3>Tu próximo cliente no sabe que existes</h3>
           <p>Encontrar prospectos, averiguar quiénes son y escribirles uno a uno te toma días — y la mayoría ni contesta. Mientras tanto, tu competencia ya le llegó primero.</p>
@@ -196,63 +180,34 @@
   </div>
 </section>
 
-<!-- ============ CAPACIDADES · columnas de revista ============ -->
-<section aria-labelledby="t-learn">
-  <div class="wrap">
-    <span class="kicker reveal">En la masterclass</span>
-    <h2 id="t-learn" class="reveal">Tres capacidades que te llevas <span class="ia">esa misma noche.</span></h2>
-
-    <div class="cols3">
-      <div class="col reveal" data-delay="1">
-        <span class="num">01</span>
-        <h3>Clientes con nombre y apellido</h3>
-        <p>Usas la IA para mapear tu zona, detectar prospectos reales y preparar el primer mensaje para cada uno — la demostración del video, hecha por ti.</p>
-        <div class="linea-oro"></div>
-      </div>
-      <div class="col reveal" data-delay="2">
-        <span class="num">02</span>
-        <h3>Textos que venden, con tu voz</h3>
-        <p>Publicaciones, respuestas y cotizaciones redactadas en minutos, coherentes con tu marca. Tú revisas, ajustas y decides.</p>
-        <div class="linea-oro"></div>
-      </div>
-      <div class="col reveal" data-delay="3">
-        <span class="num">03</span>
-        <h3>Tu semana en orden</h3>
-        <p>Le describes tu carga y te ayuda a priorizar lo que mueve la aguja. Dejas de administrar el negocio desde la memoria.</p>
-        <div class="linea-oro"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ============ BONOS · línea de tiempo ============ -->
 <section aria-labelledby="t-bonos">
   <img class="wm wm-izq" src="img/marca-de-agua.png" alt="" aria-hidden="true" />
   <div class="wrap">
     <span class="kicker reveal">Al registrarte</span>
     <h2 id="t-bonos" class="reveal">Reservas tu cupo <span class="ia">y esto empieza a llegar.</span></h2>
-    <p class="lead reveal" data-delay="1">La masterclass es el domingo 2 de agosto a las 8:00 p.m. (hora Colombia). Así se ve tu camino desde el momento en que reservas:</p>
+    <p class="lead reveal" data-delay="1">La masterclass es el domingo 2 de agosto, de 8:00 a 9:30 p.m. (hora Colombia) — 90 minutos en vivo. Así se ve tu camino desde el momento en que reservas:</p>
 
     <div class="tl">
       <div class="tl-item reveal" data-delay="1">
         <span class="nodo">1</span>
         <div class="cuando">Hoy, apenas reservas</div>
         <h3>Entras a la comunidad de WhatsApp</h3>
-        <p>Un grupo donde se comparten ejemplos, trucos y respuestas — antes y después de la masterclass. Por ahí te llega todo.</p>
+        <p>Un grupo donde se comparten ejemplos, trucos y respuestas — antes y después de la masterclass. Por ahí te llega todo. <b>Ya somos 1.200+ adentro.</b></p>
       </div>
       <div class="tl-item oro reveal" data-delay="2">
         <span class="nodo">★</span>
         <div class="cuando">De inmediato, en tu WhatsApp</div>
         <span class="pill">Regalo de bienvenida</span>
         <h3>La Instrucción de Oro</h3>
-        <p>Un documento claro y con ejemplos donde aprendes las <b>etiquetas para hablarle a la IA</b>: qué significa cada una, cuándo usarla y cómo combinarlas para que te responda como un experto desde el primer mensaje — sin saber nada técnico.</p>
+        <p>Las <b>5 etiquetas explicadas, con 5+ ejemplos listos para copiar y pegar</b>. Llega a tu WhatsApp en 2 minutos — sin saber nada técnico.</p>
         <div class="etiquetas" aria-hidden="true">
           <code>&lt;rol&gt;</code><code>&lt;contexto&gt;</code><code>&lt;tarea&gt;</code><code>&lt;formato&gt;</code><code>&lt;audiencia&gt;</code>
         </div>
       </div>
       <div class="tl-item reveal" data-delay="3">
         <span class="nodo">2</span>
-        <div class="cuando">Domingo 2 de agosto · 8:00 p.m.</div>
+        <div class="cuando">Domingo 2 de agosto · 8:00 a 9:30 p.m.</div>
         <h3>Tu cupo en la masterclass en vivo</h3>
         <p>La sesión completa, con demostraciones reales y espacio para preguntas. El enlace te llega por la comunidad para que no se te pase.</p>
       </div>
@@ -284,7 +239,7 @@
       </details>
       <details>
         <summary>¿Cuándo y dónde es? <span class="chev">+</span></summary>
-        <div class="ans">El <b>domingo 2 de agosto a las 8:00 p.m.</b> (hora Colombia), en vivo y en línea. El enlace de acceso te llega por la comunidad de WhatsApp para que no se te pase.</div>
+        <div class="ans">El <b>domingo 2 de agosto, de 8:00 a 9:30 p.m.</b> (hora Colombia) — 90 minutos, en vivo y en línea. El enlace de acceso te llega por la comunidad de WhatsApp para que no se te pase.</div>
       </details>
     </div>
   </div>
@@ -296,7 +251,8 @@
     <div>
       <span class="kicker reveal">Tu cupo es gratis</span>
       <h2 id="t-registro" class="reveal">Reserva tu cupo. <span class="ia">Domingo 2 de agosto, 8 p.m.</span></h2>
-      <p class="lead reveal" data-delay="1">Cuatro preguntas rápidas — menos de un minuto. Al terminar, quedas dentro de la comunidad y <b>La Instrucción de Oro</b> sale hacia tu WhatsApp.</p>
+      <p class="lead reveal" data-delay="1">Un par de datos. 20 segundos. Al terminar, quedas dentro de la comunidad y <b>La Instrucción de Oro</b> sale hacia tu WhatsApp.</p>
+      <p class="cupos-mini reveal" data-delay="1">Quedan <b data-cupos="n">153</b> de 500 cupos · <b data-cupos="tomados">347</b> personas ya reservaron</p>
       <div class="gift reveal" data-delay="2">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M3 8h18M12 8v13M12 8S10.5 3 8 3 5 6 7 8m5 0s1.5-5 4-5 3 3 1 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Regalo: La Instrucción de Oro
@@ -305,7 +261,7 @@
 
     <form class="lead-form glass reveal" data-delay="1" id="leadForm"
           data-endpoint="PEGAR_URL_DE_GOOGLE_APPS_SCRIPT"
-          data-whatsapp="https://chat.whatsapp.com/JmmzrhZNKriCZViX3XiNhv"
+          data-whatsapp="https://chat.whatsapp.com/IdAFBS4j4hhC1lbKT5HLj4"
           novalidate>
 
       <div class="wiz-progress" aria-hidden="true">
@@ -345,7 +301,15 @@
           <button type="button" class="opt" data-value="Servicios / freelance"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Servicios o freelance</button>
           <button type="button" class="opt" data-value="Belleza / estética / salud"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Belleza o salud</button>
           <button type="button" class="opt" data-value="Aún no tengo, voy a empezar"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Voy a empezar uno</button>
-          <button type="button" class="opt" data-value="Otro"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Otro</button>
+          <button type="button" class="opt" data-value="Otro" data-requiere-detalle><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Otro</button>
+        </div>
+        <div class="otro-campo" id="otroCampo" hidden>
+          <div class="field">
+            <label for="f-otro">Cuéntanos a qué te dedicas</label>
+            <input id="f-otro" type="text" placeholder="Ej: agencia de viajes, taller, consultoría…" />
+          </div>
+          <div class="form-err" id="err-otro" role="alert" aria-live="assertive">Escríbenos a qué te dedicas para continuar.</div>
+          <button type="button" class="btn btn-oro btn-block" data-otro-ok>Continuar →</button>
         </div>
         <div class="wiz-nav">
           <button type="button" class="wiz-back" data-back>← Atrás</button>
@@ -383,7 +347,7 @@
         </label>
         <div class="form-err" id="err-final" role="alert" aria-live="assertive"></div>
         <div class="wiz-nav columna">
-          <button type="button" class="btn btn-oro btn-block" data-enviar>Reservar mi cupo gratis</button>
+          <button type="button" class="btn btn-oro btn-block" data-enviar>Reservar mi cupo gratis — quedan <span data-cupos="n">153</span></button>
           <button type="button" class="wiz-back" data-back>← Atrás</button>
         </div>
       </div>
@@ -406,7 +370,7 @@
   <div class="wrap">
     <div class="foot glass">
       <img src="img/logo-horizontal-transparente-fondos-oscuros.png" alt="Échale IA" />
-      <p>Masterclass gratuita y en vivo · Domingo 2 de agosto, 8:00 p.m. (hora Colombia)<br />© 2026 Échale IA. Todos los derechos reservados.</p>
+      <p>Masterclass gratuita y en vivo · Domingo 2 de agosto, 8:00 a 9:30 p.m. (hora Colombia)<br />© 2026 Échale IA. Todos los derechos reservados.</p>
     </div>
   </div>
 </footer>

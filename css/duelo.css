@@ -3,7 +3,6 @@
    ============================================================ */
 
 .duel{ display:grid; grid-template-columns:1fr auto 1fr; gap:clamp(16px, 2vw, 28px); align-items:stretch; margin-top:48px; }
-@media (max-width:960px){ .duel{ grid-template-columns:1fr; } .duel .vs{ justify-self:center; } }
 
 .panel{ padding:clamp(20px, 2vw, 30px); display:flex; flex-direction:column; min-width:0; }
 .panel-tag{
@@ -12,7 +11,13 @@
 }
 .panel-antes .panel-tag{ background:rgba(224,122,107,.12); border:1px solid rgba(224,122,107,.32); color:#F0A79B; }
 .panel-despues .panel-tag{ background:rgba(201,162,39,.14); border:1px solid rgba(201,162,39,.42); color:var(--oro-luz); }
-.panel-despues{ border-color:var(--linea-oro); }
+/* Neón dorado exterior: el "después" es la estrella */
+.panel-despues{
+  border-color:rgba(var(--oro-luz-rgb), .55);
+  box-shadow:var(--sombra-glass),
+    0 0 16px rgba(var(--oro-luz-rgb), .28),
+    0 0 52px -8px rgba(var(--oro-luz-rgb), .5);
+}
 
 .chat-head{ display:flex; align-items:center; gap:10px; margin-bottom:14px; padding-bottom:12px; border-bottom:1px solid rgba(255,255,255,.08); }
 .chat-head img{ width:38px; height:38px; border-radius:50%; }
@@ -33,7 +38,6 @@
 
 /* Altura fija: los mensajes nunca mueven la página */
 .chat{ display:flex; flex-direction:column; gap:11px; height:490px; overflow:hidden; }
-@media (max-width:560px){ .chat{ height:560px; } }
 
 .msg{
   max-width:94%; padding:12px 16px; border-radius:16px; font-size:.87rem; line-height:1.5;
@@ -48,7 +52,6 @@
 .panel-antes .msg.out{ color:#8fa0b5; }
 .msg .tag{ color:var(--oro-luz); font-weight:600; }
 .msg.prompt-code{ font-family:ui-monospace, "Cascadia Code", Consolas, monospace; font-size:.76rem; line-height:1.65; }
-@media (max-width:560px){ .msg{ font-size:.82rem; } .msg.prompt-code{ font-size:.7rem; } }
 
 .typing-row{ align-self:flex-start; display:flex; align-items:center; gap:10px; font-size:.78rem; color:var(--azul-gris); padding:4px 2px; }
 .typing-dots{ display:inline-flex; gap:4px; }
@@ -65,3 +68,26 @@
 .task-chip.show{ opacity:1; transform:none; }
 .chip-mal{ background:rgba(224,122,107,.1); border:1px solid rgba(224,122,107,.28); color:#F0A79B; }
 .chip-bien{ background:rgba(61,214,140,.08); border:1px solid rgba(61,214,140,.28); color:var(--verde); }
+
+/* ---------- Celular: los dos chats EN PARALELO ----------
+   Mini columnas lado a lado para que el "vs" se sienta de un
+   solo golpe, sin scroll. El vs flota en el centro. */
+@media (max-width:960px){
+  .duel{ grid-template-columns:1fr 1fr; gap:10px; position:relative; }
+  .vs{
+    position:absolute; left:50%; top:45%; transform:translate(-50%,-50%);
+    z-index:6; width:46px; height:46px; font-size:.8rem;
+  }
+  .panel{ padding:14px 10px; }
+  .panel-tag{ font-size:.54rem; letter-spacing:.1em; padding:5px 9px; margin-bottom:10px; }
+  .chat-head{ gap:7px; margin-bottom:10px; padding-bottom:9px; }
+  .chat-head img, .avatar-gen{ width:26px; height:26px; font-size:.5rem; }
+  .chat-name{ font-size:.62rem; }
+  .chat-sub{ font-size:.54rem; }
+  .chat{ gap:8px; height:520px; }
+  .msg{ font-size:.66rem; line-height:1.45; padding:8px 10px; border-radius:12px; max-width:100%; }
+  .msg.prompt-code{ font-size:.55rem; line-height:1.5; }
+  .typing-row{ font-size:.58rem; gap:6px; }
+  .typing-dots i{ width:5px; height:5px; }
+  .task-chip{ font-size:.58rem; padding:7px 10px; }
+}

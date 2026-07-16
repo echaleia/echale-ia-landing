@@ -86,6 +86,18 @@
     evaluar();
   }
 
+  /* ---------- flecha "Desliza": se desvanece al primer scroll ---------- */
+  var desliza = document.querySelector(".desliza");
+  if (desliza) {
+    var ocultarFlecha = function () {
+      if ((window.scrollY || 0) > 60) {
+        desliza.classList.add("oculta");
+        window.removeEventListener("scroll", ocultarFlecha);
+      }
+    };
+    window.addEventListener("scroll", ocultarFlecha, { passive: true });
+  }
+
   /* ---------- reloj compacto ---------- */
   var reloj = document.getElementById("cdCompact");
   if (reloj) {

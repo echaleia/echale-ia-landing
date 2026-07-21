@@ -1,3 +1,4 @@
+
 /* ============================================================
    FORMULARIO — wizard de 4 pasos → lead → comunidad WhatsApp.
    El avance se calcula desde el paso donde ocurrió el click
@@ -123,6 +124,9 @@
     data.append("origen", "landing-web");
     if (endpoint && endpoint.indexOf("http") === 0) {
       fetch(endpoint, { method: "POST", body: data, mode: "no-cors" }).catch(function () {});
+    }
+     if (typeof fbq === "function") {
+      fbq('track', 'Lead');
     }
     steps.forEach(function (s) { s.classList.remove("active"); });
     form.querySelector(".wiz-progress").style.visibility = "hidden";
